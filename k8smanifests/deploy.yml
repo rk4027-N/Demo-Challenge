@@ -15,7 +15,7 @@ spec:
       containers:
       - name: demo-app
         image: 590999018668.dkr.ecr.us-east-1.amazonaws.com/demo-app:14
-        imagePullPolicy: Never
+        imagePullPolicy: Always
 
         env:
         - name: DB_HOST
