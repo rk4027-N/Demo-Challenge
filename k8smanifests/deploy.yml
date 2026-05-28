@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: demo-app
-        image: devops-demo:v1
+        image: 590999018668.dkr.ecr.us-east-1.amazonaws.com/demo-app:14
         imagePullPolicy: Never
 
         env:
