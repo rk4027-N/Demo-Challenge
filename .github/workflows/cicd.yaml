@@ -28,6 +28,25 @@ jobs:
           uses: zricethezav/gitleaks-action@v1.3.0
           with:
             args: "--path=. --verbose"
+      synk:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+        - name: Set up Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: '18'  
+        - name: Install dependencies
+          working-directory: ./app
+          run: npm install
+        
+        - name: Run Snyk scan
+          uses: snyk/actions/node@master
+          with:
+            args: --file=app/package.json
+          env:
+            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     SonarQube:
         runs-on: ubuntu-latest
         steps:
