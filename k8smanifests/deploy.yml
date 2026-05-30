@@ -55,7 +55,4 @@ spec:
     - port: 80
       targetPort: 3000
   type: NodePort
-  template:
-    spec:
-      containers:
-        - image: nani4027/node-image:077fb7bfb21679fc331db8df427d16b0d24d3e80
+
