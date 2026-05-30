@@ -28,7 +28,7 @@ jobs:
           uses: zricethezav/gitleaks-action@v1.3.0
           with:
             args: "--path=. --verbose"
-      synk:
+    synk:
         runs-on: ubuntu-latest
         steps:
         - name: Checkout code
