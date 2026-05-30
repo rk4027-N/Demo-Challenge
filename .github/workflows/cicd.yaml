@@ -82,7 +82,7 @@ jobs:
           uses: actions/checkout@v4
         - name: update image tag
           run: |
-            sed -i "s|image: .*|image: ${{ vars.DOCKER_USERNAME }}/node-image:${{ github.sha }}|" k8smanifests/deploy.yml
+            sed -i '/name: demo-app/,/image:/s|image: .*|image: ${{ vars.DOCKER_USERNAME }}/node-image:${{ github.sha }}|' k8smanifests/deploy.yml
         - name: git config
           run: |
             git config --global user.name "github-actions[bot]"

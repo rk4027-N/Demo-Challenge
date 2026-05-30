@@ -23,8 +23,17 @@ spec:
       # - name: ecr-secret
       initContainers:
       - name: init-container
-        image: nani4027/node-image:7d76b94ae97676f5913d898c8a8b6af5b2b5b6ee
-        command: ['sh', '-c', 'echo "Init container completed"']  
+        image: busybox:1.35.0
+        command:
+          - sh
+          - -c
+          - |
+            echo "Waiting for Postgres to be ready..."
+            until nc -z postgres 5432; do
+              echo "Postgres is not ready yet. Retrying in 5 seconds..."
+              sleep 5
+            done
+            echo "Postgres is ready. Proceeding with the application startup."  
 
       containers:
       - name: demo-app
