@@ -1,4 +1,4 @@
-```yaml
+
 apiVersion: apps/v1
 kind: Deployment
 
@@ -64,4 +64,4 @@ spec:
     targetPort: 3000
 
   type: NodePort
-```
+
