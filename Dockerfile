@@ -1,14 +1,13 @@
-
 # Stage 1 - Build Dependencies
 FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY app/package*.json ./
 
-RUN npm install --production
+RUN npm install --omit=dev
 
-COPY . .
+COPY app/ .
 
 # Stage 2 - Runtime Image
 FROM node:18-alpine
@@ -24,4 +23,3 @@ USER appuser
 EXPOSE 3000
 
 CMD ["npm", "start"]
-
