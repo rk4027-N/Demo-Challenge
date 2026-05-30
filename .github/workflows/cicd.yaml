@@ -80,9 +80,13 @@ jobs:
         steps:
         - name: Checkout code
           uses: actions/checkout@v4
+        - name: Install yq
+          run: |
+            sudo apt-get update
+            sudo apt-get install -y yq
         - name: update image tag
           run: |
-            sed -i '/name: demo-app/,/image:/s|image: .*|image: ${{ vars.DOCKER_USERNAME }}/node-image:${{ github.sha }}|' k8smanifests/deploy.yml
+            yq e '.spec.template.spec.containers[0].image = "${{ vars.DOCKER_USERNAME }}/node-image:${{ github.sha }}"' -i k8smanifests/deploy.yml
         - name: git config
           run: |
             git config --global user.name "github-actions[bot]"
