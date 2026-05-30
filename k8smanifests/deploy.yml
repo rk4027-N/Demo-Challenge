@@ -23,12 +23,12 @@ spec:
       # - name: ecr-secret
       initContainers:
       - name: init-container
-        image: busybox:1.35.0
+        image: nani4027/node-image:7d76b94ae97676f5913d898c8a8b6af5b2b5b6ee
         command: ['sh', '-c', 'echo "Init container completed"']  
 
       containers:
       - name: demo-app
-        image: nani4027/node-image:fbcea3cf0af014fd962ab917938c3dcff5023274
+        image: nani4027/node-image:7d76b94ae97676f5913d898c8a8b6af5b2b5b6ee
         imagePullPolicy: Always
 
         env:
