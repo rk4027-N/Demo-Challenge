@@ -26,9 +26,23 @@ jobs:
           uses: zricethezav/gitleaks-action@v1.3.0
           with:
             args: "--path=. --verbose"
+    SonarQube:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+        - name: Set up SonarQube
+          uses: sonarsource/sonarqube-scan-action@v5
+          env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          with:
+            args: >
+              -Dsonar.projectKey=Demo-Challenge
+              -Dsonar.host.url=http://18.204.228.177:9000/
+
     docker-build:
         runs-on: ubuntu-latest
-        needs: [Trivy, gitleaks]
+        needs: [Trivy, gitleaks, SonarQube]
         steps:
         - name: Checkout code
           uses: actions/checkout@v4
