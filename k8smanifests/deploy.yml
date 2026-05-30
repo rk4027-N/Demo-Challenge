@@ -19,12 +19,16 @@ spec:
 
     spec:
 
-      imagePullSecrets:
-      - name: ecr-secret
+      # imagePullSecrets:
+      # - name: ecr-secret
+      initContainers:
+      - name: init-container
+        image: busybox:1.35.0
+        command: ['sh', '-c', 'echo "Init container completed"']  
 
       containers:
       - name: demo-app
-        image: 590999018668.dkr.ecr.us-east-1.amazonaws.com/demo-app:14
+        image: nani4027/node-image:fbcea3cf0af014fd962ab917938c3dcff5023274
         imagePullPolicy: Always
 
         env:
@@ -38,14 +42,14 @@ spec:
           httpGet:
             path: /health/ready
             port: 3000
-          initialDelaySeconds: 15
+          initialDelaySeconds: 25
           periodSeconds: 5
 
         livenessProbe:
           httpGet:
             path: /health/live
             port: 3000
-          initialDelaySeconds: 15
+          initialDelaySeconds: 25
           periodSeconds: 10
 
 ---
