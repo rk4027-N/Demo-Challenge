@@ -59,7 +59,7 @@ jobs:
           with:
             args: >
               -Dsonar.projectKey=Demo-Challenge
-              -Dsonar.host.url=http://18.204.228.177:9000/
+              -Dsonar.host.url=http://54.165.61.88:9000/
     unit-tests:
         runs-on: ubuntu-latest
         steps:
