@@ -24,7 +24,7 @@ spec:
             - "echo \"Waiting for Postgres to be ready...\"\nuntil nc -z postgres 5432; do\n  echo \"Postgres is not ready yet. Retrying in 5 seconds...\"\n  sleep 5\ndone\necho \"Postgres is ready. Proceeding with the application startup.\"  \n"
       containers:
         - name: demo-app
-          image: nani4027/node-image:747296288b8b43d246f6468350cd98afba381f15
+          image: nani4027/node-image:0d69acd33c04a14e476eea3ec8fac5d571645f45
           imagePullPolicy: Always
           env:
             - name: DB_HOST
