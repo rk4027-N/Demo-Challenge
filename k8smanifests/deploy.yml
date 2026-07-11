@@ -17,7 +17,7 @@ spec:
       # - name: ecr-secret
       initContainers:
         - name: init-container
-          image: 590999018668.dkr.ecr.us-east-1.amazonaws.com/demo-app:21
+          image: busybox:1.35.0
           command:
             - sh
             - -c
